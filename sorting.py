@@ -212,3 +212,23 @@ def quick_sort(nums):  # n^2
             _quick_sort(items, split_index + 1, high)
 
     _quick_sort(nums, 0, nums.get_len() - 1)
+
+
+def shell_sort(nums):
+    leng = nums.get_len()
+    gap =  leng//2
+
+    while gap>0:
+        for i in range(gap, leng):
+            temp = nums.values[i]
+            j = i
+
+            while j >= gap and nums.values[j-gap] > temp:
+                nums.set(j, nums.values[j-gap])
+                j -= gap
+
+            nums.set(j, nums.values[i])
+
+        gap //= 2
+
+
